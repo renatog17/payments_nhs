@@ -1,9 +1,20 @@
 package com.nhst.payments.domain;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Embeddable
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+@Table(name = "addresses")
 public class Address {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String street;
     private String number;

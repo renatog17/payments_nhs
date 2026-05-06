@@ -1,6 +1,10 @@
 package com.nhst.payments.domain;
+
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.math.BigDecimal;
+
 
 @Getter
 @Setter
@@ -8,17 +12,17 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "payers")
-public class Payer {
+@Table(name = "charges")
+public class Charges {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
-    private String document;
+    @Column(precision = 5, scale = 2)
+    private BigDecimal finePercent;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    private Address address;
+    @Column(precision = 5, scale = 4)
+    private BigDecimal interestPerDay;
+
 }
